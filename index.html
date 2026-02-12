@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hey Cutie, Spill the Tea 🍑💕</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Comic+Neue:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Comic Neue', cursive;
+            background: linear-gradient(135deg, #ffb3ba, #ffdfba, #ffffba, #baffc9);
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+            cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32"><circle cx="16" cy="16" r="8" fill="%23ff69b4" opacity="0.7"/></svg>'), auto;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        
+        /* ORIGINAL BACKGROUND ANIMATIONS RESTORED */
+        .emoji-particle {
+            position: fixed; font-size: 36px; pointer-events: none; z-index: 1;
+            animation: rocket-particle 4s linear infinite; opacity: 0.85;
+        }
+        @keyframes rocket-particle {
+            0% { transform: translateY(100vh) scale(1) rotate(0deg); opacity: 0; }
+            5% { opacity: 1; } 90% { opacity: 1; }
+            100% { transform: translateY(-110vh) scale(1.4) rotate(720deg); opacity: 0; }
+        }
+        .particle-1 { font-size: 32px; animation-duration: 5s; }
+        .particle-2 { font-size: 40px; animation-duration: 3.5s; }
+        .particle-3 { font-size: 44px; animation-duration: 4.2s; }
+        
+        .shooting-star {
+            position: fixed; font-size: 64px; z-index: 2; opacity: 0.9;
+            animation: shootingStar 8s linear infinite;
+        }
+        @keyframes shootingStar {
+            0% { transform: translateX(-150px) translateY(20vh) rotate(0deg); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translateX(120vw) translateY(80vh) rotate(360deg); opacity: 0; }
+        }
+        
+        /* ULTRA SMOOTH CLICK SPARKLES */
+        .sparkle {
+            position: fixed; pointer-events: none; z-index: 100;
+            font-size: 24px; opacity: 0; will-change: transform, opacity;
+            transform: translateZ(0); backface-visibility: hidden;
+            animation: sparkleBurst 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+        }
+        @keyframes sparkleBurst {
+            0% { opacity: 0; transform: translateZ(0) scale(0) rotate(0deg); }
+            20% { opacity: 1; transform: translateZ(0) scale(1.2) rotate(180deg); }
+            100% { opacity: 0; transform: translateZ(0) scale(0) rotate(720deg) translateY(-50px); }
+        }
+        
+        /* SMOOTH TITLES */
+        .title-container { 
+            position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); 
+            text-align: center; z-index: 25; width: 90vw; max-width: 500px;
+            pointer-events: none;
+        }
+        .hey-cutie { 
+            font-family: 'Dancing Script', cursive; font-size: clamp(3em, 10vw, 4.5em); 
+            font-weight: 700; color: #ff1493; 
+            text-shadow: 3px 3px 12px rgba(255,255,255,0.9), 0 0 20px rgba(255,20,147,0.3); 
+            margin-bottom: 8px; opacity: 0; display: block; transform-origin: center center;
+            will-change: transform, opacity; transform: translateZ(0); backface-visibility: hidden;
+            animation: heyCutieEntrance 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.5s forwards, 
+                       fadeOutTitles 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) 2.5s forwards; 
+            letter-spacing: 2px;
+        }
+        .wtf-subtitle { 
+            font-family: 'Playfair Display', serif; font-size: clamp(1.8em, 6vw, 2.6em); 
+            font-style: italic; color: #ff69b4; 
+            text-shadow: 2px 2px 8px rgba(255,255,255,0.9), 0 0 15px rgba(255,105,180,0.4); 
+            opacity: 0; display: block; transform-origin: center center;
+            will-change: transform, opacity; transform: translateZ(0); backface-visibility: hidden;
+            animation: wtfEntrance 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) 1.5s forwards, 
+                      fadeOutTitles 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) 2.5s forwards; 
+            letter-spacing: 1px;
+        }
+        
+        @keyframes heyCutieEntrance { 
+            0% { opacity: 0; transform: translate(-50%, -50%) translateY(60px) scale(0.8) translateZ(0); } 
+            100% { opacity: 1; transform: translate(-50%, -50%) translateY(-10px) scale(1.05) translateZ(0); } 
+        }
+        @keyframes wtfEntrance { 
+            0% { opacity: 0; transform: translate(-50%, -50%) scale(0.3) translateZ(0); } 
+            100% { opacity: 1; transform: translate(-50%, -50%) scale(1.05) translateZ(0); } 
+        }
+        @keyframes fadeOutTitles { 
+            0% { opacity: 1; transform: translate(-50%, -50%) scale(1.05) translateZ(0); } 
+            100% { opacity: 0; transform: translate(-50%, -50%) scale(1.05) translateZ(0); } 
+        }
+        
+        /* ULTRA SMOOTH FORM */
+        .form-container { 
+            position: relative; z-index: 30; opacity: 0; padding: 20px 0 40px; 
+            will-change: transform, opacity; transform: translateZ(0); backface-visibility: hidden;
+            animation: formSlideUp 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) 3.1s forwards; 
+        }
+        @keyframes formSlideUp { 
+            0% { opacity: 0; transform: translateY(50px) translateZ(0); } 
+            100% { opacity: 1; transform: translateY(0) translateZ(0); } 
+        }
+        
+        form { 
+            max-width: 500px; width: 90vw; margin: 0 auto; padding: 35px 30px; 
+            background: rgba(255,255,255,0.97); border-radius: 35px; 
+            box-shadow: 0 30px 60px rgba(255,182,193,0.6); backdrop-filter: blur(25px); 
+            position: relative; overflow: hidden; will-change: box-shadow, transform; transform: translateZ(0);
+        }
+        form::before { 
+            content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; 
+            background: radial-gradient(circle, rgba(255,105,180,0.1) 0%, transparent 70%); 
+            opacity: 0; transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94); 
+            will-change: transform, opacity; transform: translateZ(0);
+        }
+        form.active::before { opacity: 1; animation: formGlow 2s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
+        @keyframes formGlow { 
+            0% { transform: translateZ(0) scale(0.8); opacity: 0.5; } 
+            50% { transform: translateZ(0) scale(1.2); opacity: 1; } 
+            100% { transform: translateZ(0) scale(1); opacity: 0; } 
+        }
+        
+        /* ULTRA SMOOTH LABEL HOVER */
+        label { 
+            display: block; font-family: 'Dancing Script', cursive; font-size: clamp(1.3em, 5vw, 1.5em); 
+            font-weight: 700; color: #ff69b4; margin: 25px 0 12px; 
+            text-shadow: 1px 1px 3px rgba(255,255,255,0.8); letter-spacing: 1px; 
+            position: relative; 
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94); 
+            will-change: transform, color, text-shadow; transform: translateZ(0); backface-visibility: hidden;
+        }
+        label:hover { 
+            color: #ff1493; text-shadow: 1px 1px 5px rgba(255,20,147,0.6); 
+            transform: translateX(5px) translateZ(0); 
+        }
+        
+        /* ULTRA SMOOTH INPUT FOCUS */
+        input, textarea { 
+            width: 100%; padding: 18px 20px; border: 3px dashed #ffb6c1; border-radius: 25px; 
+            font-size: clamp(1em, 3.5vw, 1.1em); font-family: 'Playfair Display', serif; 
+            background: rgba(255,240,245,0.9); 
+            transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94); resize: vertical; 
+            font-style: italic; position: relative; overflow: hidden; 
+            will-change: transform, box-shadow, border-color; transform: translateZ(0); backface-visibility: hidden;
+        }
+        input::placeholder, textarea::placeholder { color: #ffb6c1; font-style: italic; }
+        input:focus, textarea:focus { 
+            border: 3px solid #ff1493; box-shadow: 0 0 30px rgba(255,20,147,0.7); 
+            transform: scale(1.03) translateY(-2px) translateZ(0); background: rgba(255,248,250,1); 
+        }
+        input:focus::placeholder, textarea:focus::placeholder { color: transparent; }
+        
+        /* SMOOTH MOOD SLIDER */
+        .mood-container { position: relative; margin: 15px 0; }
+        .mood-label { 
+            font-family: 'Dancing Script', cursive !important; font-size: clamp(1.4em, 5.5vw, 1.7em) !important; 
+            color: #ff1493 !important; text-align: center; margin-bottom: 20px; font-weight: 700 !important; 
+            text-shadow: 2px 2px 5px rgba(255,255,255,0.9);
+        }
+        .mood-slider { 
+            width: 100%; height: 10px; border-radius: 12px; 
+            background: linear-gradient(90deg, #ff69b4, #ffb6c1, #ff1493); -webkit-appearance: none; 
+            outline: none; margin: 15px 0; box-shadow: inset 0 2px 8px rgba(0,0,0,0.1); 
+            transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94); will-change: transform;
+        }
+        .mood-slider::-webkit-slider-thumb { 
+            -webkit-appearance: none; width: 35px; height: 35px; border-radius: 50%; 
+            background: linear-gradient(45deg, #ff1493, #ff69b4); cursor: pointer; 
+            box-shadow: 0 6px 20px rgba(255,20,147,0.6); 
+            transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94); 
+            transform: translateZ(0); will-change: transform;
+        }
+        .mood-slider::-webkit-slider-thumb:hover { 
+            transform: scale(1.2) translateZ(0); box-shadow: 0 8px 25px rgba(255,20,147,0.8); 
+        }
+        .mood-text { 
+            font-family: 'Dancing Script', cursive; font-size: clamp(1.3em, 5vw, 1.6em); 
+            color: #ff69b4; text-align: center; margin-top: 15px; font-weight: 700; 
+            text-shadow: 1px 1px 4px rgba(255,255,255,0.8); 
+            transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        
+        /* ULTRA SMOOTH BUTTON */
+        button { 
+            width: 100%; padding: 25px; 
+            background: linear-gradient(45deg, #ff69b4, #ff1493, #ff85c0); color: white; border: none; 
+            border-radius: 35px; font-family: 'Dancing Script', cursive; font-size: clamp(1.4em, 5.5vw, 1.7em); 
+            font-weight: 700; cursor: pointer; margin-top: 35px; 
+            animation: pulse 2s cubic-bezier(0.25, 0.46, 0.45, 0.94) infinite; 
+            letter-spacing: 1px; text-shadow: 1px 1px 3px rgba(0,0,0,0.2); 
+            box-shadow: 0 10px 30px rgba(255,105,180,0.5); position: relative; overflow: hidden;
+            will-change: transform, box-shadow; transform: translateZ(0); backface-visibility: hidden;
+        }
+        button::before {
+            content: ''; position: absolute; top: 50%; left: 50%; width: 0; height: 0; 
+            background: rgba(255,255,255,0.3); border-radius: 50%; 
+            transform: translate(-50%, -50%) translateZ(0); 
+            transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94); will-change: transform;
+        }
+        button:hover::before, button:active::before { width: 300px; height: 300px; }
+        button:hover, button:active { 
+            transform: scale(1.05) translateY(-2px) translateZ(0); 
+            box-shadow: 0 15px 40px rgba(255,105,180,0.7); 
+        }
+        @keyframes pulse { 
+            0% { box-shadow: 0 0 0 0 rgba(255,105,180,0.7); } 
+            70% { box-shadow: 0 0 0 25px rgba(255,105,180,0); } 
+            100% { box-shadow: 0 0 0 0 rgba(255,105,180,0); } 
+        }
+        
+        @media (max-width: 600px) { 
+            .shooting-star { font-size: 48px !important; }
+            .emoji-particle { font-size: 28px !important; }
+            form { margin: 10px auto; padding: 30px 25px; width: 95vw; }
+        }
+    </style>
+</head>
+<body>
+    <!-- ORIGINAL SHOOTING STARS -->
+    <div class="shooting-star" style="animation-delay: -1s;">🍑</div>
+    <div class="shooting-star" style="animation-delay: -3s;">🍒</div>
+    <div class="shooting-star" style="animation-delay: -5s;">🍆</div>
+    
+    <!-- TITLES -->
+    <div class="title-container">
+        <div class="hey-cutie">Hey cutie 💕</div>
+        <div class="wtf-subtitle">wtf is going on?</div>
+    </div>
+    
+    <!-- FORM -->
+    <div class="form-container">
+        <form action="https://formsubmit.co/geniusbydesign626145@gmail.com" method="POST">
+            <input type="hidden" name="_subject" value="Cutie Emergency Spill 🛢️😉🍆">
+            <input type="hidden" name="_captcha" value="false">
+            
+            <div class="mood-container">
+                <label class="mood-label">How spicy we feeling today, cutie? 🔥</label>
+                <input type="range" class="mood-slider" id="mood" name="mood" min="1" max="10" value="5">
+                <div class="mood-text" id="mood-text">Peachy/10 🍑</div>
+            </div>
+            
+            <label for="barren">Tell me more about this barren scene? 😉🍆</label>
+            <textarea id="barren" name="barren" rows="4" placeholder="Spill (in) the petrol pump... 😉"></textarea>
+            
+            <label for="macha">Is our macha beghar now? 😏</label>
+            <input type="text" id="macha" name="macha" placeholder="1 liner truth...">
+            
+            <label for="phone">Why the phone switched off? 📴</label>
+            <textarea id="phone" name="phone" rows="2" placeholder="2 lines max, cutie..."></textarea>
+            
+            <label for="khaaya">Kya khaaya, naughty? 🍑🍆</label>
+            <input type="text" id="khaaya" name="khaaya" placeholder="Be honest...">
+            
+            <label for="everything">Everything else in cutie's wild world? 🌪️💕</label>
+            <textarea id="everything" name="everything" rows="6" placeholder="All the chaos, pretty please... 😘"></textarea>
+            
+            <button type="submit">Onto this side Red</button>
+        </form>
+    </div>
+
+    <script>
+        // ULTRA SMOOTH CLICK SPARKLES (60fps)
+        document.addEventListener('click', function(e) {
+            const sparkle = document.createElement('div');
+            sparkle.className = 'sparkle';
+            sparkle.innerHTML = ['✨','💖','🌟','💫','💕','🎀','🌸'][Math.floor(Math.random()*7)];
+            sparkle.style.left = e.clientX + 'px';
+            sparkle.style.top = e.clientY + 'px';
+            document.body.appendChild(sparkle);
+            requestAnimationFrame(() => {
+                setTimeout(() => sparkle.remove(), 1000);
+            });
+        });
+        
+        // FORM GLOW (smooth)
+        document.querySelector('form').addEventListener('click', function() {
+            this.classList.add('active');
+            requestAnimationFrame(() => {
+                setTimeout(() => this.classList.remove('active'), 2000);
+            });
+        });
+        
+        // MOOD SLIDER
+        const moodSlider = document.getElementById('mood');
+        const moodText = document.getElementById('mood-text');
+        const moodLabels = {
+            1: 'Barren vibes/10 🛢️', 2: 'Dry spell/10 😴', 3: 'Meh city/10 😐',
+            4: 'Warming up/10 🌡️', 5: 'Peachy/10 🍑', 6: 'Cherry hot/10 🍒',
+            7: 'Eggplant spicy/10 🍆', 8: 'Winkie wild/10 😉', 9: 'On fire/10 🔥',
+            10: 'Cutie chaos/10 💥'
+        };
+        moodSlider.oninput = function() {
+            const value = this.value;
+            moodText.textContent = moodLabels[value];
+            moodText.style.color = value > 5 ? '#ff1493' : '#ff69b4';
+        };
+        
+        // ORIGINAL BACKGROUND EMOJIS + SHOOTING STARS
+        const emojis = ['🍓','🍟','☕','🍚','💕','💖','✨','🌸','🌟','😘','🎀','🌈','🥰','💫','🍬','🍩','🧋'];
+        for(let i = 0; i < 350; i++) {
+            const particle = document.createElement('div');
+            particle.className = `emoji-particle particle-${Math.floor(Math.random()*3) + 1}`;
+            particle.style.left = Math.random() * 100 + '%';
+            particle.style.animationDelay = `-${Math.random() * 4}s`;
+            particle.innerHTML = emojis[Math.floor(Math.random() * emojis.length)];
+            document.body.appendChild(particle);
+        }
+        
+        const shootingEmojis = ['🍑','🍒','🍆','🌟','💫'];
+        for(let i = 0; i < 15; i++) {
+            const star = document.createElement('div');
+            star.className = 'shooting-star';
+            star.style.left = '-100px';
+            star.style.animationDelay = `-${Math.random() * 8}s`;
+            star.style.animationDuration = (6 + Math.random() * 4) + 's';
+            star.innerHTML = shootingEmojis[Math.floor(Math.random() * shootingEmojis.length)];
+            document.body.appendChild(star);
+        }
+    </script>
+</body>
+</html>
